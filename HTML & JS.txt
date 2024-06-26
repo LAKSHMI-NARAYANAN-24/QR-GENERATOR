@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="qr-code.css">
+    <title>QR-CODE GENERATOR</title>
+</head>
+<body>
+    <div class="container">
+        <h1>QR-CODE GENERATOR....!</h1>
+        <div class="input">
+            <input type="text" placeholder="Name or URL" id="qrInput">
+        </div>
+        <div id="qrPlace">
+            <img src="" alt="" id="qrImg">
+        </div>
+        <button onclick="gene()">Enter</button>
+    </div>
+    <script>
+        let qrPlace=document.getElementById("qrPlace");
+        let qrInput=document.getElementById("qrInput");
+        let qrImg=document.getElementById("qrImg");
+        function gene(){
+           if(qrInput.value.length>0){
+            qrImg.src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+qrInput.value;
+            qrPlace.classList.add("showQr");
+           }else {
+            qrInput.classList.add("error"); 
+            setTimeout(() => {
+                qrInput.classList.remove("error"); 
+            }, 2000);
+           }
+        }
+
+
+    </script>
+</body>
+</html>
